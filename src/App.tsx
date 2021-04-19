@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Sidebar from "./components/Sidebar";
+import Preview from "./components/Preview";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gray-800 flex items-stretch h-screen">
+      <div className="w-full md:w-2/5 2xl:w-1/4">
+        <Sidebar/>
+      </div>
+      <div className="hidden md:block flex-grow">
+        <Preview/>
+      </div>
     </div>
   );
 }
