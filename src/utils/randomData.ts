@@ -145,6 +145,6 @@ const getRndUser = (id: number): User => {
 };
 
 export function getRndUserList(): User[] {
-  let random = Math.floor(Math.random() * 30) + 5;
+  let random = Math.floor(Math.random() * 30) + 35;
   return new Array(random).fill(null).map((item, i) => getRndUser(i));
 }
