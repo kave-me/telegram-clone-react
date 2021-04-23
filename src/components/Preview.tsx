@@ -1,5 +1,5 @@
 import useBackend from "../store/useBackend";
-import useAPP from "../store/useApp";
+import useApp from "../store/useApp";
 import { ChatStream, User, UserState } from "../store/storeTypes";
 import { IncomingMessage, OutgoingMessage } from "./Message";
 import { HappyIcon } from "../assets/tsx-svg-icon/HappyIcon";
@@ -12,10 +12,12 @@ import { PhoneIcon } from "../assets/tsx-svg-icon/PhoneIcon";
 import { SearchIcon } from "../assets/tsx-svg-icon/SearchIcon";
 
 function ActivePreviewHead(props: { fullName: string; userState: UserState }) {
+  const setUserInfoModal = useApp((store) => store.setUserInfoModal);
+  // TODO: handle bookmark
   const bookmarked = true;
   return (
     <div className="h-16 flex justify-between items-center px-3 bg-gray-800 flex-grow-0 border-b border-gray-600">
-      <div className="cursor-pointer">
+      <div onClick={() => setUserInfoModal(true)} className="cursor-pointer">
         <h5 className="text-gray-100 text-base drop-shadow-md">
           {props.fullName}
         </h5>
@@ -52,7 +54,7 @@ function ActivePreviewBottom() {
   return (
     <div className="h-14 w-full flex items-center bg-gray-800 flex-grow-0 border-t border-gray-700 ">
       <PaperClipIcon />
-      <div className=" h-12 w-full flex-grow-1">
+      <div className="h-12 w-full flex-grow-1">
         <input
           placeholder={"Write message..."}
           className="w-full h-full outline-none bg-gray-800 text-gray-50"
@@ -65,15 +67,17 @@ function ActivePreviewBottom() {
 }
 
 function ActivePreview(props: { user: User }) {
-  const TUID = useAPP((store) => store.TUID);
+  const TUID = useApp((store) => store.TUID);
   const getChatStream = useBackend((store) => store.getChatStream);
+  let stream = getChatStream(props.user.id, TUID);
+
   return (
     <div className="w-full h-screen flex flex-col items-stretch">
       <ActivePreviewHead
         fullName={props.user.fullName}
         userState={props.user.state}
       />
-      <ActivePreviewCenter chatStream={getChatStream(props.user.id, TUID)} />
+      <ActivePreviewCenter chatStream={stream} />
       <ActivePreviewBottom />
     </div>
   );
@@ -91,7 +95,7 @@ function NothingToPreview() {
 }
 
 export default function Preview() {
-  const TUID = useAPP((store) => store.TUID);
+  const TUID = useApp((store) => store.TUID);
   const getUser = useBackend((store) => store.getUser);
   const user = getUser(TUID);
 
