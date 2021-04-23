@@ -11,9 +11,11 @@ interface BackendStore extends State {
   getUsername: (id: number) => string;
   getLastMessage: (current_id: number, target_id: number) => ChatStream;
   getUnreadMessageCount: (current_id: number, target_id: number) => number;
+  sendMessage: (current_id: number, target_id: number, message: string) => void;
 }
 const useBackend = create<BackendStore>((set, get) => ({
   data: getRndUserList(),
+  newState: false,
   getChatList(id) {
     const [result] = get()
       .data.filter((user) => user.id === id)
@@ -63,6 +65,45 @@ const useBackend = create<BackendStore>((set, get) => ({
       (chat) => chat.state === "UNREAD"
     );
     return totalUnreadMessages.length;
+  },
+  sendMessage(cid, tid, msg) {
+    const [currentUser] = get().data.filter((user) => user.id === cid);
+    const otherUsers = get().data.filter((user) => user.id !== cid);
+
+    const [currentChat] = currentUser.chats.filter((chat) => chat.id === tid);
+    const otherChats = currentUser.chats.filter((chat) => chat.id !== tid);
+
+    const newMessage: ChatStream = {
+      id: 1,
+      date: new Date(),
+      direction: "OUT",
+      message: msg,
+      state: "READ",
+    };
+
+    const updatedUser: User = {
+      ...currentUser,
+      chats: [
+        ...otherChats,
+        {
+          ...currentChat,
+          id: tid,
+          stream: [
+            ...currentChat.stream,
+            {
+              ...newMessage,
+              id: currentChat.stream.length,
+            },
+          ],
+        },
+      ],
+    };
+    console.dir(updatedUser);
+
+    set(() => [...otherUsers, updatedUser]);
+
+    const state = get();
+    set(() => ({ ...state, newState: true }));
   },
 }));
 
