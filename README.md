@@ -1,7 +1,7 @@
 # Chat App - Test Task
 This is a React app as a technical task.
 ## Demo
-[On Vercel](http://telegram-clone-react-kave.vercel.app/)
+Hosted [in Vercel](http://telegram-clone-react-kave.vercel.app/)
 
 ## Given Task
 >As we discussed, the task title would be "Telegram Chats List, Chat Page, and Contacts".
@@ -24,10 +24,9 @@ yarn start
 ```
 ## Actual Implementation
 
-![Desktop screen](./README_ASSETS/1.png)
-![Desktop screen](./README_ASSETS/3.png)
-![Desktop screen](./README_ASSETS/2.png)
-![Desktop screen](./README_ASSETS/4.png)
+![Desktop screen](./README_ASSETS/desktop.png)
+![Desktop screen](./README_ASSETS/tablet_phone.png)
+
 
 #### TODO
 - Sending message
