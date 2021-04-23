@@ -1,10 +1,9 @@
 import useBackend from "../store/useBackend";
-import useAPP from "../store/useApp";
-import clsx from "clsx";
+import useApp from "../store/useApp";
 
 function ChatCard(props: { id: number; click: () => void }) {
-  const CUID = useAPP((store) => store.CUID);
-  const TUID = useAPP((store) => store.TUID);
+  const CUID = useApp((store) => store.CUID);
+  const TUID = useApp((store) => store.TUID);
   const getAvatar = useBackend((store) => store.getAvatar);
   const getUsername = useBackend((store) => store.getUsername);
   const getLastMessage = useBackend((store) => store.getLastMessage);
@@ -15,10 +14,9 @@ function ChatCard(props: { id: number; click: () => void }) {
   return (
     <div
       onClick={() => props.click()}
-      className={clsx({
-        "h-18 w-full p-4 flex hover:bg-gray-700 cursor-pointer": true,
-        ["bg-gray-700"]: props.id === TUID,
-      })}>
+      className={`${"h-18 w-full p-4 flex hover:bg-gray-700 cursor-pointer"} ${
+        props.id === TUID ? "bg-gray-700" : ""
+      }`}>
       <img
         className="w-16 h-14 rounded-full object-cover shadow-md"
         src={getAvatar(props.id)}
@@ -48,8 +46,8 @@ function ChatCard(props: { id: number; click: () => void }) {
 }
 
 export function ChatList() {
-  const setTargetUser = useAPP((store) => store.setTargetUser);
-  const CUID = useAPP((store) => store.CUID);
+  const setTargetUser = useApp((store) => store.setTargetUser);
+  const CUID = useApp((store) => store.CUID);
   const CUser = useBackend((store) => store.getUser(CUID));
   return (
     <div className="w-full h-full overflow-y-auto hover:overflow-x-hidden scrollbar scrollbar-thumb-gray-300 scrollbar-track-gray-600 scrollbar-thin scrollbar-thumb">
