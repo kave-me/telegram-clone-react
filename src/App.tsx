@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Preview from "./components/Preview";
 import useApp from "./store/useApp";
-import { UserInformationModal } from "./UserInfoModal";
+import { UserInformationModal } from "./components/UserInfoModal";
 
 function App() {
   const setTargetUser = useApp((store) => store.setTargetUser);

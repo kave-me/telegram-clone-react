@@ -1,16 +1,16 @@
 import React from "react";
-import { UserState } from "./store/storeTypes";
-import { PhoneIcon } from "./assets/tsx-svg-icon/PhoneIcon";
-import { DotsIcon } from "./assets/tsx-svg-icon/DotsIcon";
-import { CloseIcon } from "./CloseIcon";
-import useApp from "./store/useApp";
-import useBackend from "./store/useBackend";
-import { PhotoIcon } from "./assets/tsx-svg-icon/PhotoIcon";
-import { DocumentIcon } from "./assets/tsx-svg-icon/DocumentIcon";
-import { MicrophoneIcon } from "./assets/tsx-svg-icon/MicrophoneIcon";
-import { GroupIcon } from "./assets/tsx-svg-icon/GroupIcon";
-import { InfoIcon } from "./assets/tsx-svg-icon/InfoIcon";
-import { BellIcon } from "./assets/tsx-svg-icon/BellIcon";
+import { UserState } from "../store/storeTypes";
+import { PhoneIcon } from "../assets/tsx-svg-icon/PhoneIcon";
+import { DotsIcon } from "../assets/tsx-svg-icon/DotsIcon";
+import { CloseIcon } from "../assets/tsx-svg-icon/CloseIcon";
+import useApp from "../store/useApp";
+import useBackend from "../store/useBackend";
+import { PhotoIcon } from "../assets/tsx-svg-icon/PhotoIcon";
+import { DocumentIcon } from "../assets/tsx-svg-icon/DocumentIcon";
+import { MicrophoneIcon } from "../assets/tsx-svg-icon/MicrophoneIcon";
+import { GroupIcon } from "../assets/tsx-svg-icon/GroupIcon";
+import { InfoIcon } from "../assets/tsx-svg-icon/InfoIcon";
+import { BellIcon } from "../assets/tsx-svg-icon/BellIcon";
 
 function Head(props: {
   profilePic: string;
