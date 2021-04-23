@@ -53,15 +53,21 @@ function ActivePreviewCenter(props: { chatStream: ChatStream[] }) {
 function ActivePreviewBottom() {
   return (
     <div className="h-14 w-full flex items-center bg-gray-800 flex-grow-0 border-t border-gray-700 ">
-      <PaperClipIcon />
+      <span className="mx-2">
+        <PaperClipIcon size={8} />
+      </span>
       <div className="h-12 w-full flex-grow-1">
         <input
           placeholder={"Write message..."}
           className="w-full h-full outline-none bg-gray-800 text-gray-50"
         />
       </div>
-      <HappyIcon />
-      <MicrophoneIcon />
+      <span className="ml-2">
+        <HappyIcon size={8} />
+      </span>
+      <span className="mx-2">
+        <MicrophoneIcon size={8} />
+      </span>
     </div>
   );
 }
