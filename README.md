@@ -25,7 +25,7 @@ yarn start
 ## Actual Implementation
 
 ![Desktop screen](./README_ASSETS/desktop.png)
-![Desktop screen](./README_ASSETS/tablet_phone.png)
+![Tablet and Phone screen](./README_ASSETS/tablet_phone.png)
 
 
 #### TODO
