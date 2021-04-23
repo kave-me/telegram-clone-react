@@ -2,7 +2,7 @@ export function PaperClipIcon() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="h-8 w-8 m-2 flex-grow-0 text-gray-500"
+      className="h-6 w-6 text-gray-500"
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor">
